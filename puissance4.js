@@ -53,7 +53,10 @@ function grille(nbLigne, nbColumn) {
  }
 
 valide.addEventListener("click", function () {
-  etatJeu.cellules = grille(Number(nbLignes.value), Number(nbColumns.value))  
+  etatJeu.cellules = grille(Number(nbLignes.value), Number(nbColumns.value))
+  nbColumns.hidden= true  
+  nbLignes.hidden= true  
+  valide.hidden= true 
 const cellules = document.querySelectorAll(".case");
 for (const cellule of cellules) {
   cellule.addEventListener("click", jouer);
