@@ -5,8 +5,8 @@ let etatJeu = {
   joueur: "BLEU",
 };
 
-// // Selection les élements du tableau
-// // création de fonction
+// Selection les élements du tableau
+
 const iconx = "🔴";
 const icono = "🟡";
 function jouer(event) {
@@ -23,6 +23,7 @@ function jouer(event) {
   etatJeu.cellules[ligne][colonne] = etatJeu.joueur;
   etatJeu.joueur = etatJeu.joueur === "BLEU" ? "ROND" : "BLEU";
 }
+
 
 
 // grille addeptative
