@@ -7,8 +7,8 @@ let etatJeu = {
 
 // // Selection les élements du tableau
 // // création de fonction
-const iconx = "😀";
-const icono = "😛";
+const iconx = "🔴";
+const icono = "🟡";
 function jouer(event) {
   console.log(event.target.id);
   const id = event.target.id;
