@@ -1,11 +1,12 @@
 // On sélectione le H1 du chronometre + on crée des variables
-
+let  bouton_valide = document.querySelector("#valide");
 let h1 = document.querySelectorAll("#chrono")[0],
   seconde = 0,
   minutes = 0,
   temps;
 
 // On crée une fonction qui permet d'ajouter + 1 au minute quand le chrono est à 60 seconde et on ajoute du texte
+
 
 function chrono() {
   seconde++;
@@ -27,4 +28,5 @@ function chrono() {
  function timer() {
   temps = setTimeout(chrono, 1000);
 }
-setTimeout (timer, 5000)
+
+bouton_valide.addEventListener("click", chrono);

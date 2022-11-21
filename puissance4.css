@@ -1,20 +1,28 @@
 .table {
-  border-collapse: collapse;
-  margin: 3rem auto;
+  background-color: #0902d7c1;
+  margin: 5rem auto;
+  border-bottom:solid 10px #0902d7c1;
+  border-right:solid 10px #0902d7c1;
+  border-left:solid 10px #0902d7c1
 }
 
 .table td {
-  height: 100px;
-  width: 100px;
-  border: 8px solid #0902d7c1;
+  font-size: 5rem;
+  height: 150px;
+  width: 150px;
+  background-color: white;
   cursor: pointer;
-  font-size: 3rem;
-  padding: 15px;
-  padding-right: 8px;
-  padding-left: 8px;
-  box-shadow: 0 5px 20px black;
+  box-shadow: 0 5px 15px black;
   border-top: none;
+  text-align: center;
+  border-radius: 50%;
+  
 }
+
+.table tr {
+  margin: 70px;
+}
+
 
 th {
   background-color: #3d2683;
@@ -22,14 +30,15 @@ th {
   border: solid 1px grey;
   padding-top: 20px;
   padding-bottom: 20px;
+  
 }
 
-td {
-  padding: 10px;
+.tableau td {
+  height: 50px;
   border: solid 1px grey;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  
 }
+
 
 .tableau {
   border-collapse: collapse;
@@ -49,8 +58,3 @@ h1 {
 a {
   color: white;
 }
-
-/* .rond {
-  height: 100%;
-  border: 5px solid #0902d7c1;
-} */
