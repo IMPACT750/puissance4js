@@ -79,62 +79,75 @@ function win(i,j, y){
 //Horizontal
 for ( i = i; i < y.length; i++) {
   for(  j = j; j < y.length; j++ ) {
-    
-  // if (
-  //   (etatJeu.cellules[i][j] === etatJeu.joueur &&
-  //   etatJeu.cellules[i][(j + 1)] === etatJeu.joueur &&
-  //   etatJeu.cellules[i][(j + 2)] === etatJeu.joueur &&
-  //   etatJeu.cellules[i][(j + 3)] === etatJeu.joueur)
-  //   ||
-  //   (etatJeu.cellules[i][j] === etatJeu.joueur &&
-  //   etatJeu.cellules[i][(j - 1)] === etatJeu.joueur &&
-  //   etatJeu.cellules[i][(j - 2)] === etatJeu.joueur &&
-  //   etatJeu.cellules[i][(j - 3)] === etatJeu.joueur)
-  // ) {
-  //   return etatJeu.joueur;
-  // }
-  if(
-    ( etatJeu.cellules[i][j] === etatJeu.joueur &&
-    etatJeu.cellules[i + 1][j] === etatJeu.joueur &&
+if (
+  (etatJeu.cellules[i][j] === etatJeu.joueur &&
+  etatJeu.cellules[i][(j + 1)] === etatJeu.joueur &&
+  etatJeu.cellules[i][(j + 2)] === etatJeu.joueur &&
+  etatJeu.cellules[i][(j + 3)] === etatJeu.joueur)
+  ||
+  (etatJeu.cellules[i][j] === etatJeu.joueur &&
+  etatJeu.cellules[i][(j - 1)] === etatJeu.joueur &&
+  etatJeu.cellules[i][(j - 2)] === etatJeu.joueur &&
+  etatJeu.cellules[i][(j - 3)] === etatJeu.joueur)
+) {
+  return etatJeu.joueur;
+}
+
+// verticale
+
+
+  if( 
+    (y.length-4)<i<= 0 && 
+    etatJeu.cellules[i][j] === etatJeu.joueur &&
+    etatJeu.cellules[i +1][j] === etatJeu.joueur &&
     etatJeu.cellules[(i + 2)][j] === etatJeu.joueur &&
     etatJeu.cellules[(i + 3)][j] === etatJeu.joueur)
-    ||
-    ( etatJeu.cellules[i][j] === etatJeu.joueur &&
-    etatJeu.cellules[i - 1][j] === etatJeu.joueur &&
-    etatJeu.cellules[(i - 2)][j] === etatJeu.joueur &&
-    etatJeu.cellules[(i- 3)][j] === etatJeu.joueur)
-  ) {
-    return etatJeu.joueur;
-  }
-  console.log(etatJeu.cellules)
-  }
-}
+    {
+      return etatJeu.joueur;
+    }
+  // Vérifie les diagonales
+  if (
+  ( (y.length-4)<i<= 0 && 
+  etatJeu.cellules[i][j] === etatJeu.joueur &&
+  etatJeu.cellules[(i + 1)][(j + 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(i + 2)][(j + 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(i + 3)][(j + 3)] === etatJeu.joueur) 
+  ||
+  ((y.length-4)<i<= 0 &&
+  etatJeu.cellules[i][j] === etatJeu.joueur &&
+  etatJeu.cellules[(i + 1)][(j - 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(i + 2)][(j - 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(i + 3)][(j - 3)] === etatJeu.joueur) 
+  ||
+  ((y.length-4)<i<= 0 &&
+  etatJeu.cellules[i][j] === etatJeu.joueur &&
+  etatJeu.cellules[(i-1)][(j-1)] === etatJeu.joueur &&
+  etatJeu.cellules[(i-2)][(j-2)] === etatJeu.joueur &&
+  etatJeu.cellules[(i-3)][(j-3)] === etatJeu.joueur) 
 
-
-// Vérifie les diagonales
-// Diagonale 1
-if (
-  etatJeu.cellules[0][0] === etatJeu.joueur &&
-  etatJeu.cellules[1][1] === etatJeu.joueur &&
-  etatJeu.cellules[2][2] === etatJeu.joueur
 ) {
   return etatJeu.joueur;
 }
+    }
+  }
 
-// Diagonale 2
-if (
-  etatJeu.cellules[0][2] === etatJeu.joueur &&
-  etatJeu.cellules[1][1] === etatJeu.joueur &&
-  etatJeu.cellules[2][0] === etatJeu.joueur
-) {
-  return etatJeu.joueur;
-}
 return null;
 }
 
 
-valide.addEventListener("click", function () {
-  etatJeu.cellules = grille(Number(nbLignes.value), Number(nbColumns.value))
+valide.addEventListener("click", function () {0
+  let nombreLigne = Number(nbLignes.value)
+  let nombreColumn = Number(nbColumns.value)
+  if (nombreLigne < 5){
+    nombreLigne = 5
+  }
+  if (nombreColumn < 6){
+    nombreColumn = 6
+    alert(`les valeurs ont était mise a 5 ligne et 6 colonne car vous avez choisi des nombre trop petit`)
+  }
+  etatJeu.cellules = grille(nombreLigne, nombreColumn)
+  alert(`votre tableau de jeu fait ${nombreLigne} de ligne et ${nombreColumn} de colonne`)
+
   nbColumns.hidden= true  
   nbLignes.hidden= true  
   valide.hidden= true 
