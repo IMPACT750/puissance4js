@@ -52,6 +52,7 @@ function grille(nbLigne, nbColumn) {
     } }
     for (let i = 0; i< nbLigne; i++){
       let tr = document.createElement("tr")
+      tr.classList.add("tr")
     for (let j = 0; j < nbColumn; j++){
       ;
       let td = document.createElement("td");
@@ -113,7 +114,7 @@ if (
   etatJeu.cellules[(parametreLigne + 2)][(parametreColonne - 2)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne + 3)][(parametreColonne - 3)] === etatJeu.joueur) 
   ||
-  ((table2D.length-4)<parametreLigne<= 0 &&
+  ((table2D.length-4)<parametreLigne< 0 &&
   etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-1)][(parametreColonne-1)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-2)][(parametreColonne-2)] === etatJeu.joueur &&
@@ -164,13 +165,15 @@ bouton_nouvelle_partie.addEventListener("click", function() {
 //Reset 
 
 let bouton_nouvelle_reset = document.querySelector("#reset");
-let table = document.querySelector(".table")
-let tr = document.getElementsByTagName("tr")
+ let table = document.querySelector(".table") 
 
 bouton_nouvelle_reset.addEventListener("click", function() {
   let nombreLigne = Number(nbLignes.value)
   let nombreColumn = Number(nbColumns.value)
-  table.removeChild(tr)
+  const tr = document.querySelectorAll(".tr")
+  table.remove()
+  document.body.appendChild(table)
+  etatJeu.cellules = etatJeu.joueur = 0;
   etatJeu.cellules = grille(nombreLigne, nombreColumn)
   alert(`votre tableau de jeu fait ${nombreLigne} de ligne et ${nombreColumn} de colonne`);
 });
