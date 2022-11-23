@@ -47,8 +47,14 @@ input{
   border-radius: 50px;
   transition: 0.4s;
   width: 10%;
+
   color : white;
   cursor: pointer;
+}
+
+input:hover {
+  background-color: #000000;
+  transition: 1s;
 }
 
 .logo{
