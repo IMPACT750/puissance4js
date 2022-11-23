@@ -3,21 +3,28 @@ li.ancre {
   font-size: 20px;
   margin-right: 50px;
   padding: 4px;
-  color: #6745ce;
+  color: #262627b9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .block1 {
-  color: #6745ce;
+  color: #262627b9;
 }
 
 h1 {
-  color: #6745ce;
+  color: #262627b9;
   font-size: 45px;
   margin: 5px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1:hover {
+  color: #000003;
+  transition: 1s;
 }
 
 .description {
-  color: #6745ce;
+  color: #262627b9;
   font-size: 20px;
 }
 .logo{
