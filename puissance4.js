@@ -28,7 +28,7 @@ function jouer(event) {
     // On met à jour l'affichage
     event.target.textContent = etatJeu.joueur === "JAUNE" ? icono : iconx;
     // On vérifie si le joueur a gagné
-    const gagnant = win(ligne,colonne,10,10,ligne,colonne);
+    const gagnant = win(ligne,colonne,etatJeu.cellules);
     if (gagnant !== null) {
       // On affiche le message de victoire
       message.textContent = `Le joueur ${gagnant} a gagné!`;
@@ -75,45 +75,42 @@ function grille(nbLigne, nbColumn) {
 
 // win 
 
-function win(i,j, y, a,b,c){
+function win(i,j, y){
 //Horizontal
-for ( i = i; i < y; i++) {
-  for(  j = j; j < a; j++ ) {
-  if (
-    etatJeu.cellules[i][j] === etatJeu.joueur &&
-    etatJeu.cellules[i][(j + 1)] === etatJeu.joueur &&
-    etatJeu.cellules[i][(j + 2)] === etatJeu.joueur &&
-    etatJeu.cellules[i][(j + 3)] === etatJeu.joueur
+for ( i = i; i < y.length; i++) {
+  for(  j = j; j < y.length; j++ ) {
+    
+  // if (
+  //   (etatJeu.cellules[i][j] === etatJeu.joueur &&
+  //   etatJeu.cellules[i][(j + 1)] === etatJeu.joueur &&
+  //   etatJeu.cellules[i][(j + 2)] === etatJeu.joueur &&
+  //   etatJeu.cellules[i][(j + 3)] === etatJeu.joueur)
+  //   ||
+  //   (etatJeu.cellules[i][j] === etatJeu.joueur &&
+  //   etatJeu.cellules[i][(j - 1)] === etatJeu.joueur &&
+  //   etatJeu.cellules[i][(j - 2)] === etatJeu.joueur &&
+  //   etatJeu.cellules[i][(j - 3)] === etatJeu.joueur)
+  // ) {
+  //   return etatJeu.joueur;
+  // }
+  if(
+    ( etatJeu.cellules[i][j] === etatJeu.joueur &&
+    etatJeu.cellules[i + 1][j] === etatJeu.joueur &&
+    etatJeu.cellules[(i + 2)][j] === etatJeu.joueur &&
+    etatJeu.cellules[(i + 3)][j] === etatJeu.joueur)
     ||
-    etatJeu.cellules[i][j] === etatJeu.joueur &&
-    etatJeu.cellules[i][(j - 1)] === etatJeu.joueur &&
-    etatJeu.cellules[i][(j - 2)] === etatJeu.joueur &&
-    etatJeu.cellules[i][(j - 3)] === etatJeu.joueur
+    ( etatJeu.cellules[i][j] === etatJeu.joueur &&
+    etatJeu.cellules[i - 1][j] === etatJeu.joueur &&
+    etatJeu.cellules[(i - 2)][j] === etatJeu.joueur &&
+    etatJeu.cellules[(i- 3)][j] === etatJeu.joueur)
   ) {
     return etatJeu.joueur;
   }
-}
+  console.log(etatJeu.cellules)
+  }
 }
 
-//  vertical
-// for ( b = b; b < y; b++) {
-//   for(  c= c; c< a; c++ ) {
-//     console.log("test2");
-//   if (
-//     etatJeu.cellules[c][b] === etatJeu.joueur &&
-//     etatJeu.cellules[c][(b + 1)] === etatJeu.joueur &&
-//     etatJeu.cellules[c][(b + 2)] === etatJeu.joueur &&
-//     etatJeu.cellules[c][(b + 3)] === etatJeu.joueur
-//     ||
-//     etatJeu.cellules[c][b] === etatJeu.joueur &&
-//     etatJeu.cellules[c][(b - 1)] === etatJeu.joueur &&
-//     etatJeu.cellules[c][(b - 2)] === etatJeu.joueur &&
-//     etatJeu.cellules[c][(b - 3)] === etatJeu.joueur
-//   ) {
-//     return etatJeu.joueur;
-//   }
-//   }
-// }
+
 // Vérifie les diagonales
 // Diagonale 1
 if (
