@@ -1,11 +1,13 @@
 h1 {
-  color: #3b2683;
+  color: #2626279a;
   font-size: 45px;
   margin: 5px auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h1:hover {
-  color: #6745ce;
+  color: #000000;
+  transition: 1s;
 }
 
 a {
@@ -14,7 +16,7 @@ a {
 }
 
 button {
-  background-color: #3b2683;
+  background-color: #2626279a;
   border: none;
   border-bottom: solid 4px black;
   padding: 20px;
@@ -30,11 +32,26 @@ button {
 
 button:hover {
   box-shadow: 0 5px 10px black;
-  background-color: #6745ce;
+  background-color: #000000;
+  transition: 1s;
 }
-/* 
-body{
-  background-image: url(http://img.gifmagazine.net/gifmagazine/images/704479/original.gif) ;
-  background-repeat: no-repeat;
-  background-size: 100%;
-} */
+
+input{
+  background-color: #6745ce;
+  border: none;
+  border-bottom: solid 4px black;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 50px;
+  transition: 0.4s;
+  width: 10%;
+  color : white;
+  cursor: pointer;
+}
+
+.logo{
+  margin-top: 5px;
+}
+

@@ -4,7 +4,7 @@ header {
   top: 0;
   flex-wrap: wrap;
   display: flex;
-  background-color: #3b2683;
+  background-color: #2626279a;
 }
 
 /* navbar */
@@ -16,7 +16,7 @@ header {
     column-gap: 20%;
   }
   nav.b {
-    background: #3d2683;
+    background: #262627b9;
     width: 100%;
     position: fixed;
     top: 0;
@@ -48,7 +48,7 @@ header {
     list-style: none;
     display: none;
     position: absolute;
-    background-color: #3d2683;
+    background-color: #262627b9;
     transform: translate(0px, 50%);
     visibility: hidden;
   }
@@ -81,7 +81,7 @@ header {
     display: none;
   }
   nav.a {
-    background: #3d2683;
+    background: #262627b9;
     width: 100%;
     position: fixed;
     top: 0;
@@ -96,7 +96,7 @@ header {
   }
 
   div.menu a:hover {
-    background-color: #6745ce;
+    background-color: #262627b9;
     border-radius: 50px;
     border: 2px solid white;
   }
@@ -133,7 +133,7 @@ header {
 }
 
 button.burger3 {
-  background-color: #3b2683;
+  background-color: #262627b9;
   border: none;
   color: white;
   padding: 20px;
@@ -146,7 +146,7 @@ button.burger3 {
 
 button.burger3:hover {
   box-shadow: 0 5px 10px black;
-  background-color: #6745ce;
+  background-color: #262627b9;
 }
 
 @media only screen and (min-width: 1238px) {
@@ -163,7 +163,7 @@ button.burger3:hover {
   }
 
   div.menu a:hover {
-    background-color: #6745ce;
+    background-color: #262627b9;
     border-radius: 50px;
     border: 2px solid white;
   }
@@ -193,12 +193,12 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #3d2683;
+  background-color: #262627b9;
   border-radius: 15px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background-color: #6745ce;
+  background-color: #262627b9;
   height: 100px;
 }
 
@@ -212,39 +212,4 @@ div.top {
   position: fixed;
 }
 
-/* deut de footer*/
-footer {
-  background-color: #3d2683;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 15%;
-}
 
-div.c1 {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  row-gap: 1em;
-  column-gap: 5em;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.box2 {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  width: 350px;
-  height: auto;
-  color: white;
-  text-align: justify;
-}
-
-.box2 ul li {
-  list-style: none;
-  display: inline;
-}
-
-/*fin de footer */
