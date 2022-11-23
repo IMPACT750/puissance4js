@@ -25,9 +25,16 @@ button {
   transition: 0.4s;
   width: 10%;
   color : white;
+  cursor: pointer;
 }
 
 button:hover {
   box-shadow: 0 5px 10px black;
   background-color: #6745ce;
 }
+/* 
+body{
+  background-image: url(http://img.gifmagazine.net/gifmagazine/images/704479/original.gif) ;
+  background-repeat: no-repeat;
+  background-size: 100%;
+} */
