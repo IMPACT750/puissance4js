@@ -6,7 +6,7 @@ let etatJeu = {
   cellules: [],
 
   // Deux joueurs possibles : "BLEU" ou "ORANGE"
-  joueur: "ROUGE",
+  joueur: "NOIR",
 };
 
 // // Selection les élements du tableau
@@ -18,29 +18,22 @@ const message = document.querySelector("#instruction");
 
 function jouer(event) {
   const id = event.target.getAttribute("id");
-  const morceaux = id.split("-");
-  const ligne = parseInt(morceaux[1]);
-  const colonne = parseInt(morceaux[2]);
+  const idInfo = id.split("-");
+  const ligne = Number(idInfo[1]);
+  const colonne = Number(idInfo[2]);
   const cellule = etatJeu.cellules[ligne][colonne];
   if (cellule === null) {
-    // On met à jour l'état du jeu
     etatJeu.cellules[ligne][colonne] = etatJeu.joueur;
-    // On met à jour l'affichage
-    event.target.textContent = etatJeu.joueur === "JAUNE" ? icono : iconx;
-    // On vérifie si le joueur a gagné
+    event.target.textContent = etatJeu.joueur === "BLANC" ? icono : iconx;
     const gagnant = win(ligne,colonne,etatJeu.cellules);
     if (gagnant !== null) {
-      // On affiche le message de victoire
       message.textContent = `Le joueur ${gagnant} a gagné!`;
-      // On désactive les cellules
       cellules.forEach((cellule) => {
         cellule.removeEventListener("click", jouer);
         cellule.classList.add("disabled");
       });
     } else {
-    //   // On change de joueur
-      etatJeu.joueur = etatJeu.joueur === "ROUGE" ? "JAUNE" : "ROUGE";
-      // On affiche le message
+      etatJeu.joueur = etatJeu.joueur === "NOIR" ? "BLANC" : "NOIR";
       message.textContent = `Au tour du joueur ${etatJeu.joueur}`;
     }
   }
@@ -75,67 +68,68 @@ function grille(nbLigne, nbColumn) {
 
 // win 
 
-function win(i,j, y){
+function win(ligness,colonness, table2D){
 //Horizontal
-for ( i = i; i < y.length; i++) {
-  for(  j = j; j < y.length; j++ ) {
+for ( ligness = ligness; ligness < table2D.length; ligness++) {
+  for(  colonness = colonness; colonness < table2D.length; colonness++ ) {
 if (
-  (etatJeu.cellules[i][j] === etatJeu.joueur &&
-  etatJeu.cellules[i][(j + 1)] === etatJeu.joueur &&
-  etatJeu.cellules[i][(j + 2)] === etatJeu.joueur &&
-  etatJeu.cellules[i][(j + 3)] === etatJeu.joueur)
+  (etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
+  etatJeu.cellules[ligness][(colonness + 1)] === etatJeu.joueur &&
+  etatJeu.cellules[ligness][(colonness + 2)] === etatJeu.joueur &&
+  etatJeu.cellules[ligness][(colonness + 3)] === etatJeu.joueur)
   ||
-  (etatJeu.cellules[i][j] === etatJeu.joueur &&
-  etatJeu.cellules[i][(j - 1)] === etatJeu.joueur &&
-  etatJeu.cellules[i][(j - 2)] === etatJeu.joueur &&
-  etatJeu.cellules[i][(j - 3)] === etatJeu.joueur)
-) {
+  (etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
+  etatJeu.cellules[ligness][(colonness - 1)] === etatJeu.joueur &&
+  etatJeu.cellules[ligness][(colonness - 2)] === etatJeu.joueur &&
+  etatJeu.cellules[ligness][(colonness - 3)] === etatJeu.joueur)
+){
   return etatJeu.joueur;
 }
+
 
 // verticale
 
 
   if( 
-    (y.length-4)<i<= 0 && 
-    etatJeu.cellules[i][j] === etatJeu.joueur &&
-    etatJeu.cellules[i +1][j] === etatJeu.joueur &&
-    etatJeu.cellules[(i + 2)][j] === etatJeu.joueur &&
-    etatJeu.cellules[(i + 3)][j] === etatJeu.joueur)
+    (table2D.length-4)<ligness<= 0 && 
+    etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
+    etatJeu.cellules[(ligness +1)][colonness] === etatJeu.joueur &&
+    etatJeu.cellules[(ligness + 2)][colonness] === etatJeu.joueur &&
+    etatJeu.cellules[(ligness + 3)][colonness] === etatJeu.joueur)
     {
       return etatJeu.joueur;
     }
   // Vérifie les diagonales
   if (
-  ( (y.length-4)<i<= 0 && 
-  etatJeu.cellules[i][j] === etatJeu.joueur &&
-  etatJeu.cellules[(i + 1)][(j + 1)] === etatJeu.joueur &&
-  etatJeu.cellules[(i + 2)][(j + 2)] === etatJeu.joueur &&
-  etatJeu.cellules[(i + 3)][(j + 3)] === etatJeu.joueur) 
+  ( (table2D.length-4)<ligness<= 0 && 
+  etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
+  etatJeu.cellules[(ligness + 1)][(colonness + 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(ligness + 2)][(colonness + 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(ligness + 3)][(colonness + 3)] === etatJeu.joueur) 
   ||
-  ((y.length-4)<i<= 0 &&
-  etatJeu.cellules[i][j] === etatJeu.joueur &&
-  etatJeu.cellules[(i + 1)][(j - 1)] === etatJeu.joueur &&
-  etatJeu.cellules[(i + 2)][(j - 2)] === etatJeu.joueur &&
-  etatJeu.cellules[(i + 3)][(j - 3)] === etatJeu.joueur) 
+  ((table2D.length-4)<ligness<= 0 &&
+  etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
+  etatJeu.cellules[(ligness + 1)][(colonness - 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(ligness + 2)][(colonness - 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(ligness + 3)][(colonness - 3)] === etatJeu.joueur) 
   ||
-  ((y.length-4)<i<= 0 &&
-  etatJeu.cellules[i][j] === etatJeu.joueur &&
-  etatJeu.cellules[(i-1)][(j-1)] === etatJeu.joueur &&
-  etatJeu.cellules[(i-2)][(j-2)] === etatJeu.joueur &&
-  etatJeu.cellules[(i-3)][(j-3)] === etatJeu.joueur) 
+  ((table2D.length-4)<ligness<= 0 &&
+  etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
+  etatJeu.cellules[(ligness-1)][(colonness-1)] === etatJeu.joueur &&
+  etatJeu.cellules[(ligness-2)][(colonness-2)] === etatJeu.joueur &&
+  etatJeu.cellules[(ligness-3)][(colonness-3)] === etatJeu.joueur) 
 
 ) {
   return etatJeu.joueur;
 }
     }
-  }
+
 
 return null;
 }
+}
 
-
-valide.addEventListener("click", function () {0
+valide.addEventListener("click", function () {
   let nombreLigne = Number(nbLignes.value)
   let nombreColumn = Number(nbColumns.value)
   if (nombreLigne < 5){
@@ -157,5 +151,5 @@ for (const cellule of cellules) {
 
 }
 
-});
+})
 
