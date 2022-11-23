@@ -153,3 +153,24 @@ for (const cellule of cellules) {
 
 })
 
+//Nouvelle partie 
+
+let bouton_nouvelle_partie = document.querySelector("#partie");
+
+bouton_nouvelle_partie.addEventListener("click", function() {
+  location.reload();
+});
+
+//Reset 
+
+let bouton_nouvelle_reset = document.querySelector("#reset");
+let table = document.querySelector(".table")
+let tr = document.getElementsByTagName("tr")
+
+bouton_nouvelle_reset.addEventListener("click", function() {
+  let nombreLigne = Number(nbLignes.value)
+  let nombreColumn = Number(nbColumns.value)
+  table.removeChild(tr)
+  etatJeu.cellules = grille(nombreLigne, nombreColumn)
+  alert(`votre tableau de jeu fait ${nombreLigne} de ligne et ${nombreColumn} de colonne`);
+});
