@@ -11,8 +11,8 @@ let etatJeu = {
 
 // // Selection les élements du tableau
 
-const iconx = "⚫️";
-const icono = "⚪️ ";
+const iconNoir = "⚫️";
+const iconBlanc = "⚪️ ";
 const cellules = document.querySelectorAll(".cellule");
 const message = document.querySelector("#instruction");
 
@@ -24,7 +24,7 @@ function jouer(event) {
   const cellule = etatJeu.cellules[ligne][colonne];
   if (cellule === null) {
     etatJeu.cellules[ligne][colonne] = etatJeu.joueur;
-    event.target.textContent = etatJeu.joueur === "BLANC" ? icono : iconx;
+    event.target.textContent = etatJeu.joueur === "BLANC" ? iconBlanc : iconNoir;
     const gagnant = win(ligne,colonne,etatJeu.cellules);
     if (gagnant !== null) {
       message.textContent = `Le joueur ${gagnant} a gagné!`;
@@ -68,20 +68,20 @@ function grille(nbLigne, nbColumn) {
 
 // win 
 
-function win(ligness,colonness, table2D){
+function win(parametreLigne,parametreColonne, table2D){
 //Horizontal
-for ( ligness = ligness; ligness < table2D.length; ligness++) {
-  for(  colonness = colonness; colonness < table2D.length; colonness++ ) {
+for ( parametreLigne = parametreLigne; parametreLigne < table2D.length; parametreLigne++) {
+  for(  parametreColonne = parametreColonne; parametreColonne < table2D.length; parametreColonne++ ) {
 if (
-  (etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
-  etatJeu.cellules[ligness][(colonness + 1)] === etatJeu.joueur &&
-  etatJeu.cellules[ligness][(colonness + 2)] === etatJeu.joueur &&
-  etatJeu.cellules[ligness][(colonness + 3)] === etatJeu.joueur)
+  (etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[parametreLigne][(parametreColonne + 1)] === etatJeu.joueur &&
+  etatJeu.cellules[parametreLigne][(parametreColonne + 2)] === etatJeu.joueur &&
+  etatJeu.cellules[parametreLigne][(parametreColonne + 3)] === etatJeu.joueur)
   ||
-  (etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
-  etatJeu.cellules[ligness][(colonness - 1)] === etatJeu.joueur &&
-  etatJeu.cellules[ligness][(colonness - 2)] === etatJeu.joueur &&
-  etatJeu.cellules[ligness][(colonness - 3)] === etatJeu.joueur)
+  (etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[parametreLigne][(parametreColonne - 1)] === etatJeu.joueur &&
+  etatJeu.cellules[parametreLigne][(parametreColonne - 2)] === etatJeu.joueur &&
+  etatJeu.cellules[parametreLigne][(parametreColonne - 3)] === etatJeu.joueur)
 ){
   return etatJeu.joueur;
 }
@@ -91,33 +91,33 @@ if (
 
 
   if( 
-    (table2D.length-4)<ligness<= 0 && 
-    etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
-    etatJeu.cellules[(ligness +1)][colonness] === etatJeu.joueur &&
-    etatJeu.cellules[(ligness + 2)][colonness] === etatJeu.joueur &&
-    etatJeu.cellules[(ligness + 3)][colonness] === etatJeu.joueur)
+    (table2D.length-4)<parametreLigne<= 0 && 
+    etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+    etatJeu.cellules[(parametreLigne +1)][parametreColonne] === etatJeu.joueur &&
+    etatJeu.cellules[(parametreLigne + 2)][parametreColonne] === etatJeu.joueur &&
+    etatJeu.cellules[(parametreLigne + 3)][parametreColonne] === etatJeu.joueur)
     {
       return etatJeu.joueur;
     }
   // Vérifie les diagonales
   if (
-  ( (table2D.length-4)<ligness<= 0 && 
-  etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
-  etatJeu.cellules[(ligness + 1)][(colonness + 1)] === etatJeu.joueur &&
-  etatJeu.cellules[(ligness + 2)][(colonness + 2)] === etatJeu.joueur &&
-  etatJeu.cellules[(ligness + 3)][(colonness + 3)] === etatJeu.joueur) 
+  ( (table2D.length-4)<parametreLigne<= 0 && 
+  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 1)][(parametreColonne + 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 2)][(parametreColonne + 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 3)][(parametreColonne + 3)] === etatJeu.joueur) 
   ||
-  ((table2D.length-4)<ligness<= 0 &&
-  etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
-  etatJeu.cellules[(ligness + 1)][(colonness - 1)] === etatJeu.joueur &&
-  etatJeu.cellules[(ligness + 2)][(colonness - 2)] === etatJeu.joueur &&
-  etatJeu.cellules[(ligness + 3)][(colonness - 3)] === etatJeu.joueur) 
+  ((table2D.length-4)<parametreLigne<= 0 &&
+  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 1)][(parametreColonne - 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 2)][(parametreColonne - 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 3)][(parametreColonne - 3)] === etatJeu.joueur) 
   ||
-  ((table2D.length-4)<ligness<= 0 &&
-  etatJeu.cellules[ligness][colonness] === etatJeu.joueur &&
-  etatJeu.cellules[(ligness-1)][(colonness-1)] === etatJeu.joueur &&
-  etatJeu.cellules[(ligness-2)][(colonness-2)] === etatJeu.joueur &&
-  etatJeu.cellules[(ligness-3)][(colonness-3)] === etatJeu.joueur) 
+  ((table2D.length-4)<parametreLigne<= 0 &&
+  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-1)][(parametreColonne-1)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-2)][(parametreColonne-2)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-3)][(parametreColonne-3)] === etatJeu.joueur) 
 
 ) {
   return etatJeu.joueur;
