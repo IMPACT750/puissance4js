@@ -11,8 +11,8 @@ let etatJeu = {
 
 // // Selection les élements du tableau
 
-const iconx = "🔴";
-const icono = "🟡";
+const iconx = "⚫️";
+const icono = "⚪️ ";
 const cellules = document.querySelectorAll(".cellule");
 const message = document.querySelector("#instruction");
 
