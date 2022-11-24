@@ -13,6 +13,7 @@ const iconNoir = "⚫️";
 const iconBlanc = "⚪️ ";
 
 const message = document.querySelector("#instruction");
+const message1 = document.querySelector(".score");
 
 function jouer(event) {
   const id = event.target.getAttribute("id");
@@ -26,7 +27,7 @@ function jouer(event) {
     console.table(etatJeu.cellules);
     const gagnant = win(i,colonne,etatJeu.cellules);
     if (gagnant !== null) {
-      message.textContent = `Le joueur ${gagnant} a gagné!`;
+      message1.textContent = `Le joueur ${gagnant} a gagné!`;
       cellules.forEach((cellule) => {
         cellule.removeEventListener("click", jouer);
         cellule.classList.add("disabled");
