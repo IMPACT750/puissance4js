@@ -124,10 +124,10 @@ if (
   etatJeu.cellules[(parametreLigne-3)][(parametreColonne-3)] === etatJeu.joueur) 
 
 ) {
+
   return etatJeu.joueur;
 }
     }
-
 
 return null;
 }
@@ -174,9 +174,10 @@ let bouton_nouvelle_reset = document.querySelector("#reset");
 bouton_nouvelle_reset.addEventListener("click", function() {
   let nombreLigne = Number(nbLignes.value)
   let nombreColumn = Number(nbColumns.value)
-  const tr = document.querySelectorAll(".tr")
   table.remove()
-  document.body.appendChild(table)
+  let table2 = document.createElement("table");
+  table2.classList.add('.table')
+  document.querySelector("body").appendChild(table2)
   etatJeu.cellules = etatJeu.joueur = 0;
   etatJeu.cellules = grille(nombreLigne, nombreColumn)
   alert(`votre tableau de jeu fait ${nombreLigne} de ligne et ${nombreColumn} de colonne`);
