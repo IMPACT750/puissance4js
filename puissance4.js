@@ -11,19 +11,20 @@ let etatJeu = {
 
 const iconNoir = "⚫️";
 const iconBlanc = "⚪️ ";
-const cellules = document.querySelectorAll(".cellule");
+
 const message = document.querySelector("#instruction");
 
 function jouer(event) {
   const id = event.target.getAttribute("id");
   const idInfo = id.split("-");
-  const ligne = Number(idInfo[1]);
   const colonne = Number(idInfo[2]);
-  const cellule = etatJeu.cellules[ligne][colonne];
-  if (cellule === null) {
-    etatJeu.cellules[ligne][colonne] = etatJeu.joueur;
-    event.target.textContent = etatJeu.joueur === "BLANC" ? iconBlanc : iconNoir;
-    const gagnant = win(ligne,colonne,etatJeu.cellules);
+  for (let i = etatJeu.cellules.length - 1; i >= 0; i--){
+  if (etatJeu.cellules[i][colonne] === null) {
+    const cellules = document.querySelector(`#cell-${i}-${colonne}`);
+    etatJeu.cellules[i][colonne] = etatJeu.joueur;
+    cellules.textContent = etatJeu.joueur === "BLANC" ? iconBlanc : iconNoir;
+    console.table(etatJeu.cellules);
+    const gagnant = win(i,colonne,etatJeu.cellules);
     if (gagnant !== null) {
       message.textContent = `Le joueur ${gagnant} a gagné!`;
       cellules.forEach((cellule) => {
@@ -33,11 +34,10 @@ function jouer(event) {
     } else {
       etatJeu.joueur = etatJeu.joueur === "NOIR" ? "BLANC" : "NOIR";
       message.textContent = `Au tour du joueur ${etatJeu.joueur}`;
-    }
-  }
+    } ;
+break}}
 
 }
-
 
 
 // grille addeptative
@@ -149,6 +149,7 @@ const cellules = document.querySelectorAll(".case");
 for (const cellule of cellules) {
   cellule.addEventListener("click", jouer);
 
+ 
 }
 
 })
