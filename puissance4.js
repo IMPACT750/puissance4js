@@ -4,12 +4,10 @@ let  nbLignes = document.querySelector("#nbLigne");
 let  valide = document.querySelector("#valide");
 let etatJeu = {
   cellules: [],
-
-  // Deux joueurs possibles : "BLEU" ou "ORANGE"
   joueur: "NOIR",
 };
 
-// // Selection les élements du tableau
+// jouer
 
 const iconNoir = "⚫️";
 const iconBlanc = "⚪️ ";
@@ -37,6 +35,7 @@ function jouer(event) {
       message.textContent = `Au tour du joueur ${etatJeu.joueur}`;
     }
   }
+
 }
 
 
@@ -67,7 +66,7 @@ function grille(nbLigne, nbColumn) {
   return (board)
  }
 
-// win 
+// condition de victoire  
 
 function win(parametreLigne,parametreColonne, table2D){
 //Horizontal
@@ -177,3 +176,5 @@ bouton_nouvelle_reset.addEventListener("click", function() {
   etatJeu.cellules = grille(nombreLigne, nombreColumn)
   alert(`votre tableau de jeu fait ${nombreLigne} de ligne et ${nombreColumn} de colonne`);
 });
+
+
