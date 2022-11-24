@@ -19,12 +19,15 @@ function jouer(event) {
   const id = event.target.getAttribute("id");
   const idInfo = id.split("-");
   const colonne = Number(idInfo[2]);
+  // gravité
   for (let i = etatJeu.cellules.length - 1; i >= 0; i--){
   if (etatJeu.cellules[i][colonne] === null) {
     const cellules = document.querySelector(`#cell-${i}-${colonne}`);
     etatJeu.cellules[i][colonne] = etatJeu.joueur;
     cellules.textContent = etatJeu.joueur === "BLANC" ? iconBlanc : iconNoir;
     console.table(etatJeu.cellules);
+
+//vérifier la vitoire 
     const gagnant = win(i,colonne,etatJeu.cellules);
     if (gagnant !== null) {
       message1.textContent = `Le joueur ${gagnant} a gagné!`;
@@ -37,7 +40,6 @@ function jouer(event) {
       message.textContent = `Au tour du joueur ${etatJeu.joueur}`;
     } ;
 break}}
-
 }
 
 
