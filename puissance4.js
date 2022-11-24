@@ -19,6 +19,7 @@ function jouer(event) {
   const id = event.target.getAttribute("id");
   const idInfo = id.split("-");
   const colonne = Number(idInfo[2]);
+  
   // gravité
   for (let i = etatJeu.cellules.length - 1; i >= 0; i--){
   if (etatJeu.cellules[i][colonne] === null) {
