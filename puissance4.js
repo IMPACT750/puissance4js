@@ -2,6 +2,7 @@
 let nbColumns = document.querySelector("#nbColumn");
 let  nbLignes = document.querySelector("#nbLigne");
 let  valide = document.querySelector("#valide");
+let jeu2 = document.querySelector("#jeu");
 let etatJeu = {
   cellules: [],
   joueur: "NOIR",
@@ -32,11 +33,7 @@ function jouer(event) {
     const gagnant = win(i,colonne,etatJeu.cellules);
     if (gagnant !== null) {
       message1.textContent = `Le joueur ${gagnant} a gagné!`;
-      cellules.forEach((cellule) => {
-        cellule.removeEventListener("click", jouer);
-        cellule.classList.add("disabled");
-      });
-    } else {
+      } else {
       etatJeu.joueur = etatJeu.joueur === "NOIR" ? "BLANC" : "NOIR";
       message.textContent = `Au tour du joueur ${etatJeu.joueur}`;
     } ;
@@ -122,6 +119,12 @@ if (
   etatJeu.cellules[(parametreLigne-1)][(parametreColonne-1)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-2)][(parametreColonne-2)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-3)][(parametreColonne-3)] === etatJeu.joueur) 
+  ||
+  ((table2D.length-4)>parametreLigne> 0 &&
+  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-1)][(parametreColonne + 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-2)][(parametreColonne + 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-3)][(parametreColonne + 3)] === etatJeu.joueur) 
 
 ) {
 
@@ -150,8 +153,12 @@ valide.addEventListener("click", function () {
   nbLignes.hidden= true  
   valide.hidden= true 
 const cellules = document.querySelectorAll(".case");
+let bouton_nouvelle_reset = document.querySelector("#reset");
+bouton_nouvelle_reset.addEventListener("click", reset)
 for (const cellule of cellules) {
   cellule.addEventListener("click", jouer);
+// boutton reset 
+
 
  
 }
@@ -168,19 +175,18 @@ bouton_nouvelle_partie.addEventListener("click", function() {
 
 //Reset 
 
-let bouton_nouvelle_reset = document.querySelector("#reset");
- let table = document.querySelector(".table") 
 
-bouton_nouvelle_reset.addEventListener("click", function() {
+ function reset(){
+  let table = document.querySelector(".table") 
   let nombreLigne = Number(nbLignes.value)
   let nombreColumn = Number(nbColumns.value)
   table.remove()
   let table2 = document.createElement("table");
-  table2.classList.add('.table')
-  document.querySelector("body").appendChild(table2)
-  etatJeu.cellules = etatJeu.joueur = 0;
+  table2.classList.add('table')
+  jeu2.appendChild(table2)
+  etatJeu.cellules = etatJeu.joueur = null;
   etatJeu.cellules = grille(nombreLigne, nombreColumn)
   alert(`votre tableau de jeu fait ${nombreLigne} de ligne et ${nombreColumn} de colonne`);
-});
+ }
 
 
