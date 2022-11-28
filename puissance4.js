@@ -87,10 +87,7 @@ if (
   return etatJeu.joueur;
 }
 
-
 // verticale
-
-
   if( 
     (table2D.length-4)<parametreLigne<= 0 && 
     etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
@@ -108,27 +105,29 @@ if (
   etatJeu.cellules[(parametreLigne + 2)][(parametreColonne + 2)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne + 3)][(parametreColonne + 3)] === etatJeu.joueur) 
   ||
-  ((table2D.length-4)<parametreLigne<= 0 &&
-  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne + 1)][(parametreColonne - 1)] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne + 2)][(parametreColonne - 2)] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne + 3)][(parametreColonne - 3)] === etatJeu.joueur) 
-  ||
   ((table2D.length-4)<parametreLigne< 0 &&
   etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-1)][(parametreColonne-1)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-2)][(parametreColonne-2)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-3)][(parametreColonne-3)] === etatJeu.joueur) 
-  ||
-  ((table2D.length-4)>parametreLigne> 0 &&
-  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne-1)][(parametreColonne + 1)] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne-2)][(parametreColonne + 2)] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne-3)][(parametreColonne + 3)] === etatJeu.joueur) 
-
 ) {
 
   return etatJeu.joueur;
+}
+if (
+  ((table2D.length-4)<=parametreLigne<= 0 &&
+  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 1)][(parametreColonne - 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 2)][(parametreColonne - 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 3)][(parametreColonne - 3)] === etatJeu.joueur) 
+  ||
+  ((table2D.length-4)<=parametreLigne< 0 &&
+  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-1)][(parametreColonne + 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-2)][(parametreColonne + 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-3)][(parametreColonne + 3)] === etatJeu.joueur)
+){
+  return etatJeu.joueur
 }
     }
 
