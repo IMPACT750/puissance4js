@@ -111,7 +111,6 @@ if (
   etatJeu.cellules[(parametreLigne-2)][(parametreColonne-2)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-3)][(parametreColonne-3)] === etatJeu.joueur) 
 ) {
-
   return etatJeu.joueur;
 }
 if (
@@ -127,12 +126,12 @@ if (
   etatJeu.cellules[(parametreLigne-2)][(parametreColonne + 2)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-3)][(parametreColonne + 3)] === etatJeu.joueur)
 ){
-  return etatJeu.joueur
+  return etatJeu.joueur;
 }
     }
-
+  }
 return null;
-}
+
 }
 
 valide.addEventListener("click", function () {
@@ -151,13 +150,13 @@ valide.addEventListener("click", function () {
   nbColumns.hidden= true  
   nbLignes.hidden= true  
   valide.hidden= true 
+
 const cellules = document.querySelectorAll(".case");
-let bouton_nouvelle_reset = document.querySelector("#reset");
-bouton_nouvelle_reset.addEventListener("click", reset)
 for (const cellule of cellules) {
   cellule.addEventListener("click", jouer);
-// boutton reset 
-
+// //boutton reset 
+// let bouton_nouvelle_reset = document.querySelector("#reset");
+// bouton_nouvelle_reset.addEventListener("click", reset)
 
  
 }
