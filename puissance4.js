@@ -33,12 +33,14 @@ function jouer(event) {
     const gagnant = win(i,colonne,etatJeu.cellules);
     if (gagnant !== null) {
       message1.textContent = `Le joueur ${gagnant} a gagné!`;
+      alert(`Le joueur ${gagnant} a gagné!`)
       } else {
       etatJeu.joueur = etatJeu.joueur === "NOIR" ? "BLANC" : "NOIR";
       message.textContent = `Au tour du joueur ${etatJeu.joueur}`;
     } ;
 break}}
 }
+
 
 
 // grille addeptative
@@ -70,19 +72,23 @@ function grille(nbLigne, nbColumn) {
 // condition de victoire  
 
 function win(parametreLigne,parametreColonne, table2D){
+  
+    for(  parametreColonne = parametreColonne ; parametreColonne < table2D[parametreLigne].length; parametreColonne++ ) {
 //Horizontal
-for ( parametreLigne = parametreLigne; parametreLigne < table2D.length; parametreLigne++) {
-  for(  parametreColonne = parametreColonne; parametreColonne < table2D.length; parametreColonne++ ) {
+
 if (
-  (etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
   etatJeu.cellules[parametreLigne][(parametreColonne + 1)] === etatJeu.joueur &&
   etatJeu.cellules[parametreLigne][(parametreColonne + 2)] === etatJeu.joueur &&
-  etatJeu.cellules[parametreLigne][(parametreColonne + 3)] === etatJeu.joueur)
-  ||
-  (etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[parametreLigne][(parametreColonne + 3)] === etatJeu.joueur
+){
+    return etatJeu.joueur;
+  }
+if(
+  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
   etatJeu.cellules[parametreLigne][(parametreColonne - 1)] === etatJeu.joueur &&
   etatJeu.cellules[parametreLigne][(parametreColonne - 2)] === etatJeu.joueur &&
-  etatJeu.cellules[parametreLigne][(parametreColonne - 3)] === etatJeu.joueur)
+  etatJeu.cellules[parametreLigne][(parametreColonne - 3)] === etatJeu.joueur
 ){
   return etatJeu.joueur;
 }
@@ -97,39 +103,48 @@ if (
     {
       return etatJeu.joueur;
     }
+  }
   // Vérifie les diagonales
+
+
   if (
-  ( (table2D.length-4)<parametreLigne<= 0 && 
-  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne + 1)][(parametreColonne + 1)] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne + 2)][(parametreColonne + 2)] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne + 3)][(parametreColonne + 3)] === etatJeu.joueur) 
-  ||
-  ((table2D.length-4)<parametreLigne< 0 &&
-  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne-1)][(parametreColonne-1)] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne-2)][(parametreColonne-2)] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne-3)][(parametreColonne-3)] === etatJeu.joueur) 
+  (table2D.length-4)<parametreLigne<= 0 && 
+  etatJeu.cellules[parametreLigne][parametreLigne] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 1)][(parametreLigne + 1)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 2)][(parametreLigne + 2)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne + 3)][(parametreLigne + 3)] === etatJeu.joueur)
+  {
+    return etatJeu.joueur;
+  }
+  
+  if (parametreLigne >= 3  && 
+  etatJeu.cellules[parametreLigne][parametreLigne] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-1)][(parametreLigne-1)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-2)][(parametreLigne-2)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-3)][(parametreLigne-3)] === etatJeu.joueur
 ) {
   return etatJeu.joueur;
 }
-if (
-  ((table2D.length-4)<=parametreLigne<= 0 &&
+
+if 
+  ((table2D.length-4) <= parametreLigne <= 0 &&
   etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne + 1)][(parametreColonne - 1)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne + 2)][(parametreColonne - 2)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne + 3)][(parametreColonne - 3)] === etatJeu.joueur) 
-  ||
-  ((table2D.length-4)<=parametreLigne< 0 &&
+  {
+    return etatJeu.joueur;
+  }
+
+  if (parametreLigne >= 3 &&
   etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-1)][(parametreColonne + 1)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-2)][(parametreColonne + 2)] === etatJeu.joueur &&
-  etatJeu.cellules[(parametreLigne-3)][(parametreColonne + 3)] === etatJeu.joueur)
+  etatJeu.cellules[(parametreLigne-3)][(parametreColonne + 3)] === etatJeu.joueur
 ){
   return etatJeu.joueur;
 }
-    }
-  }
+
 return null;
 
 }
