@@ -6,16 +6,16 @@
 }
 
 .table td {
-  font-size: 6rem;
-  height: 150px;
-  width: 150px;
+  font-size: 5rem;
+  height: 130px;
+  width: 130px;
   background-color: white;
   cursor: pointer;
   box-shadow: 0 5px 15px black;
   border-top: none;
   text-align: center;
   border-radius: 50%;
-  
+  margin-top: -30px;
 }
 
 .table tr {
@@ -33,7 +33,7 @@ th {
 }
 
 .tableau td {
-  height: 50px;
+  height: 10px;
   border: solid 1px grey;
   
 }
@@ -42,7 +42,7 @@ th {
 .tableau {
   border-collapse: collapse;
   text-align: center;
-  width: 80%;
+  width: 40%;
   box-shadow: 0 5px 20px black;
   margin: center;
   border: solid 3px #262627b9;
