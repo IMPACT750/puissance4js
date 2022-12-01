@@ -28,16 +28,15 @@ function jouer(event) {
     etatJeu.cellules[i][colonne] = etatJeu.joueur;
     cellules.textContent = etatJeu.joueur === "BLANC" ? iconBlanc : iconNoir;
     console.table(etatJeu.cellules);
-
+    // else if (gagnant === undefined) {
+    //   alert(`null!`)
+    // }
 //vérifier la vitoire 
     const gagnant = win(i,colonne,etatJeu.cellules);
-    if (gagnant === etatJeu) {
+    if (gagnant !== null) {
       message1.textContent = `Le joueur ${gagnant} a gagné!`;
       alert(`Le joueur ${gagnant} a gagné!`)
       } 
-      else if (gagnant === undefined) {
-        alert(`null!`)
-      }
       else {
       etatJeu.joueur = etatJeu.joueur === "NOIR" ? "BLANC" : "NOIR";
       message.textContent = `Au tour du joueur ${etatJeu.joueur}`;
@@ -211,18 +210,18 @@ if (
   return etatJeu.joueur;
 }
 }
-let null1 = 0
-for(  let i  = 0 ; i < table2D.length-1; i++ ){
-for(  j = 0 ;j < table2D[parametreLigne].length-1; j++ ){
-  if(etatJeu.cellules[i][j] !== null){
-    null1 += 1
-    if (null1 === (table2D.length-1)*(table2D[parametreLigne].length-1)){
-      return undefined
-    }
-  }
-}
+// let null1 = 0
+// for(  let i  = 0 ; i < table2D.length-1; i++ ){
+// for(  j = 0 ;j < table2D[parametreLigne].length-1; j++ ){
+//   if(etatJeu.cellules[i][j] !== null){
+//     null1 += 1
+//     if (null1 === (table2D.length-1)*(table2D[parametreLigne].length-1)){
+//       return undefined
+//     }
+//   }
+// }
 
-}
+// }
 
 
 return null;
