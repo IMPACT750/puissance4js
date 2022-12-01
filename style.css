@@ -8,73 +8,7 @@ header {
 }
 
 /* navbar */
-@media only screen and (max-width: 1024px) {
-  nav.a {
-    display: none;
-  }
-  div.box {
-    column-gap: 20%;
-  }
-  nav.b {
-    background: #262627b9;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 10;
-  }
-  a {
-    padding: 10px;
-    color: white;
-    text-decoration: none;
-  }
 
-  .logob {
-    display: flex;
-    justify-items: center;
-    color: white;
-    align-items: center;
-    width: 50%;
-  }
-
-  div.boxb {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  ul.navb {
-    top: 0;
-    list-style: none;
-    display: none;
-    position: absolute;
-    background-color: #262627b9;
-    transform: translate(0px, 50%);
-    visibility: hidden;
-  }
-
-  .menub {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-  }
-  button.burger3 {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  button.burger3:hover + ul.navb,
-  button.burger3:visited + ul.navb,
-  ul.navb:hover {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-  }
-  ul.navb li {
-    padding-bottom: 10px;
-  }
-}
 
 @media only screen and (min-width: 1025px) {
   nav.b {
@@ -132,22 +66,6 @@ header {
   }
 }
 
-button.burger3 {
-  background-color: #262627b9;
-  border: none;
-  color: white;
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-  font-size: 16px;
-  border-radius: 50px;
-  transition: 0.4s;
-}
-
-button.burger3:hover {
-  box-shadow: 0 5px 10px black;
-  background-color: #262627b9;
-}
 
 @media only screen and (min-width: 1238px) {
   div.box {
