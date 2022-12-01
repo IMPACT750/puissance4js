@@ -5,6 +5,8 @@ let  valide = document.querySelector("#valide");
 let jeu2 = document.querySelector("#jeu");
 let scorePlayerNoir = 0 
 let scorePlayerBlanc = 0 
+const labelLigne = document.querySelector(".labelLigne");
+const labelColonne = document.querySelector(".labelColonne");
 const tour = document.querySelector(".tour");
 let nombreDeTour = 0
 let etatJeu = {
@@ -272,7 +274,8 @@ valide.addEventListener("click", function () {
   nbColumns.hidden= true  
   nbLignes.hidden= true  
   valide.hidden= true 
-
+  labelLigne.hidden= true 
+  labelColonne.hidden= true 
 const cellules = document.querySelectorAll(".case");
 for (const cellule of cellules) {
   cellule.addEventListener("click", jouer);
