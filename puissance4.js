@@ -36,6 +36,8 @@ function jouer(event) {
    const rien = PasDeGagnant(i,etatJeu.cellules);
    if (rien === null){
     alert(`null`)
+    nombreDeTour += 1;
+    tour.textContent = `${nombreDeTour}`;
    }
 //vérifier la vitoire 
     const gagnant = win(i,colonne,etatJeu.cellules);
