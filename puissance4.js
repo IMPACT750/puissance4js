@@ -3,6 +3,10 @@ let nbColumns = document.querySelector("#nbColumn");
 let  nbLignes = document.querySelector("#nbLigne");
 let  valide = document.querySelector("#valide");
 let jeu2 = document.querySelector("#jeu");
+let scorePlayerNoir = 0 
+let scorePlayerBlanc = 0 
+const tour = document.querySelector(".tour");
+let nombreDeTour = 0
 let etatJeu = {
   cellules: [],
   joueur: "NOIR",
@@ -27,7 +31,6 @@ function jouer(event) {
     const cellules = document.querySelector(`#cell-${i}-${colonne}`);
     etatJeu.cellules[i][colonne] = etatJeu.joueur;
     cellules.textContent = etatJeu.joueur === "BLANC" ? iconBlanc : iconNoir;
-    console.table(etatJeu.cellules);
 
 // verifer si null 
    const rien = PasDeGagnant(i,etatJeu.cellules);
@@ -37,8 +40,22 @@ function jouer(event) {
 //vérifier la vitoire 
     const gagnant = win(i,colonne,etatJeu.cellules);
     if (gagnant !== null) {
-      message1.textContent = `Le joueur ${gagnant} a gagné!`;
+      nombreDeTour += 1;
+      tour.textContent = `${nombreDeTour}`;
       alert(`Le joueur ${gagnant} a gagné!`)
+
+// score 
+      if (gagnant === "BLANC"){
+        scorePlayerBlanc += 1;
+        
+        message1.textContent = `BLANC ${scorePlayerBlanc} vs ${scorePlayerNoir} NOIR`;
+        
+      }
+      if (gagnant === "NOIR"){
+        scorePlayerNoir += 1;
+        message1.textContent = `BLANC ${scorePlayerBlanc} vs ${scorePlayerNoir} NOIR`;
+      }
+      reset()
       } 
       else {
       etatJeu.joueur = etatJeu.joueur === "NOIR" ? "BLANC" : "NOIR";
@@ -257,9 +274,9 @@ valide.addEventListener("click", function () {
 const cellules = document.querySelectorAll(".case");
 for (const cellule of cellules) {
   cellule.addEventListener("click", jouer);
-// //boutton reset 
-// let bouton_nouvelle_reset = document.querySelector("#reset");
-// bouton_nouvelle_reset.addEventListener("click", reset)
+//boutton reset 
+let bouton_nouvelle_reset = document.querySelector("#reset");
+bouton_nouvelle_reset.addEventListener("click", reset)
 
  
 }
@@ -278,16 +295,17 @@ bouton_nouvelle_partie.addEventListener("click", function() {
 
 
  function reset(){
-  let table = document.querySelector(".table") 
-  let nombreLigne = Number(nbLignes.value)
-  let nombreColumn = Number(nbColumns.value)
-  table.remove()
-  let table2 = document.createElement("table");
-  table2.classList.add('table')
-  jeu2.appendChild(table2)
-  etatJeu.cellules = etatJeu.joueur = null;
-  etatJeu.cellules = grille(nombreLigne, nombreColumn)
-  alert(`votre tableau de jeu fait ${nombreLigne} de ligne et ${nombreColumn} de colonne`);
- }
+ 
+  for(  let ligne  = 0 ; ligne <=etatJeu.cellules.length-1; ligne++ ){
+    for(  colonne = 0 ;colonne <=etatJeu.cellules[ligne].length-1; colonne++ ){
+      const cellules = document.querySelector(`#cell-${ligne}-${colonne}`);
+      etatJeu.cellules[ligne][colonne]  = null;
+    cellules.textContent = etatJeu.joueur === null ? "" : "";
+        }
+      } 
+    return etatJeu.cellules
+  }
+
+
 
 
