@@ -30,8 +30,8 @@ function jouer(event) {
     console.table(etatJeu.cellules);
 
 // verifer si null 
-   const rien2 = rien(i,etatJeu.cellules);
-   if (rien2 === null){
+   const rien = PasDeGagnant(i,etatJeu.cellules);
+   if (rien === null){
     alert(`null`)
    }
 //vérifier la vitoire 
@@ -221,7 +221,7 @@ return null;
 
 // null 
 
-function rien (parametreLigne, table2D){
+function PasDeGagnant (parametreLigne, table2D){
   let null1 = 0
 for(  let k  = 0 ; k < table2D.length-1; k++ ){
 for(  j = 0 ;j < table2D[parametreLigne].length-1; j++ ){
