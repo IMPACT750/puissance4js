@@ -23,7 +23,7 @@ function chrono() {
   timer();
 }
 
-//On crée une fonction temps pour le chrono se lance en une seconde
+//On crée une fonction temps pour le chrono se lance 
 
  function timer() {
   temps = setTimeout(chrono, 1000);
