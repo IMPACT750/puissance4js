@@ -117,12 +117,29 @@ if(
   ) {
     return etatJeu.joueur;
   }
+  if (
+    (table2D.length-3) <= parametreLigne <= 0 && 
+    etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+    etatJeu.cellules[(parametreLigne + 1)][(parametreColonne + 1)] === etatJeu.joueur &&
+    etatJeu.cellules[(parametreLigne + 2)][(parametreColonne + 2)] === etatJeu.joueur &&
+    etatJeu.cellules[(parametreLigne + 3)][(parametreColonne + 3)] === etatJeu.joueur
+    ) {
+      return etatJeu.joueur;
+    }
   
   if (parametreLigne >= 3  && 
   etatJeu.cellules[parametreLigne][parametreLigne] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-1)][(parametreLigne-1)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-2)][(parametreLigne-2)] === etatJeu.joueur &&
   etatJeu.cellules[(parametreLigne-3)][(parametreLigne-3)] === etatJeu.joueur
+) {
+  return etatJeu.joueur;
+}
+  if (parametreLigne >= 3  && 
+  etatJeu.cellules[parametreLigne][parametreColonne] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-1)][(parametreColonne-1)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-2)][(parametreColonne-2)] === etatJeu.joueur &&
+  etatJeu.cellules[(parametreLigne-3)][(parametreColonne-3)] === etatJeu.joueur
 ) {
   return etatJeu.joueur;
 }
