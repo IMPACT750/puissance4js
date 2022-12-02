@@ -26,7 +26,7 @@ function jouer(event) {
   const id = event.target.getAttribute("id");
   const idInfo = id.split("-");
   const colonne = Number(idInfo[2]);
-  
+  console.table(etatJeu.cellules)
   // gravité
   for (let i = etatJeu.cellules.length - 1; i >= 0; i--){
   if (etatJeu.cellules[i][colonne] === null) {
@@ -39,6 +39,7 @@ function jouer(event) {
    if (rien === null){
     alert(`null`)
     nombreDeTour += 1;
+    message1.textContent = `BLANC ${scorePlayerBlanc} vs ${scorePlayerNoir} NOIR`;
     tour.textContent = `${nombreDeTour}`;
    }
 //vérifier la vitoire 
@@ -47,7 +48,7 @@ function jouer(event) {
       nombreDeTour += 1;
       tour.textContent = `${nombreDeTour}`;
       alert(`Le joueur ${gagnant} a gagné!`)
-
+      reset()
 // score 
       if (gagnant === "BLANC"){
         scorePlayerBlanc += 1;
